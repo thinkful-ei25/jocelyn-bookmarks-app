@@ -1,14 +1,15 @@
 'use strict';
+/*global api $*/
 
 const api = (function(){
   const BASE_URL = 'https://thinkful-list-api.herokuapp.com/jocelyn';
 
-  const getItems = function(callback) {
+  const getBookmarks = function(callback) {
     $.getJSON(BASE_URL + '/bookmarks', callback);
   };
 
-  const createBookmark = function(title, onSuccess, onError) {
-    const newBookmark = JSON.stringify({ title });
+  const createBookmark = function(bookmark, onSuccess, onError) {
+    const newBookmark = JSON.stringify(bookmark);
     $.ajax({
       url: BASE_URL + '/items',
       method: 'POST',
@@ -19,7 +20,7 @@ const api = (function(){
     });
   };
   // the only updating I need is when requesting expanded view on an item
-  const updateItem = function(id, updateData, callback) {
+  const updateBookmark = function(id, updateData, callback) {
     $.ajax({
       url: BASE_URL + '/bookmarks/' + id,
       method: 'PATCH',
@@ -29,7 +30,7 @@ const api = (function(){
     });
   };
 
-  const deleteItem = function(id, callback) {
+  const deleteBookmark = function(id, callback) {
     $.ajax({
       url: BASE_URL + '/bookmarks/' + id,
       method: 'DELETE',
@@ -38,9 +39,9 @@ const api = (function(){
   };
 
   return {
-    getItems,
-    createItem,
-    // updateItem,
-    deleteItem,
+    getBookmarks,
+    createBookmark,
+    updateBookmark,
+    deleteBookmark,
   };
 }());

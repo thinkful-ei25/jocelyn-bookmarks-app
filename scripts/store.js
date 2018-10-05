@@ -1,34 +1,46 @@
 'use strict';
+/* global Bookmark */
+//eslint-disable-next-line no-unused-vars
+const store = (function(){
 
-const STORE = {
-  // bookmarks: [{
-  //   id:484828282,
-  //   title:'whales',
-  //   url:'www.whalesRus.com',
-  //   desc: 'whales are so cool',
-  //   rating: 4,
-  //   expanded: false
-  // }],
-  create:false, 
-  filter: null, 
-  error: null
-};
+  const addBookmark = function(bookmark) {
+    try{
+      Bookmark.validateTitle(title);
+      Bookmark.validateRating(rating);
+      Bookmark.validateUrl(url);
+    } catch(e){
+      console.log(e.message);
+    }
+  };
 
-function listBookmarkElement(bookmark, bookmarkIndex, template) {
+  const findByMinRating = function(rating){
+    return this.bookmarks.find(bookmark => bookmark.rating >= rating);
+  }; 
+
+
+  const setItemExpand = function(id) {
+    const bookmark = this.findById(id);
+    bookmark.expanded = !bookmark.expanded;
+  };
+
+  const findAndDelete = function(id){
+    this.bookmarks = this.bookmarks.filter(bookmark => bookmark.id !== id);
+  };
+
+
+
+
+  return {
+    bookmarks: [],
+    create:false,
+    filter:null,
+    error:null,
+
+    addBookmark,
+    findByMinRating,
+    setItemExpand,
+    findAndDelete
+  };
   
-  
-  return `
-  <li class = "js-item-element bookmark-condensed">
-  <div class = "site-title">${bookmark.title}</div>
-  <button class= "expand-button">+</button>
- 
-</li>
-  `;
-} 
-  // <div class= "rating">
-  //   <span id="1" class="fa fa-star checked"></span>
-  //   <span id="2" class="fa fa-star checked"></span>
-  //   <span id="3" class="fa fa-star checked"></span>
-  //   <span id="4" class="fa fa-star checked"></span>
-  //   <span id="5" class="fa fa-star checked"></span>
-  // </div>
+}());
+
