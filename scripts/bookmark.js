@@ -19,7 +19,7 @@ const Bookmark = (function(){
 
   const create = function(title, url, rating, desc){
     return {
-      id: 444,
+      id: cuid(),
       title, 
       url,
       rating,

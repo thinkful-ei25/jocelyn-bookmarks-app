@@ -18,16 +18,15 @@
   <main role= "main"> 
         <!-- default screen has buttons -->
     <div class ="buttons-container">
-      <button role="button" type="submit" class= "add-button">
-        <class= "button-label">Add bookmark</span>
-      </button>
-      <br>
-      <br>
+        <button role="button" type="submit" class= "add-button">
+        <span class= "button-label">Add bookmark</span>
+        </button>
+          <br>
+          <br>
       <div class ="dropdown">
         <button role="button" class ="min-rating">
           <span class = "button-label" class="min-rating-label">minimum rating</span>
         </button> 
-           <!-- when min rating button selected  -->
           <select name="rating" id="rating">
               <option type="radio" value="1">1 star</option>
               <option type="radio" value="2">2 stars</option>
@@ -36,13 +35,14 @@
               <option type="radio" value="5">5 stars</option>
           </select>
       </div>
-    </div>  
+    </div>    
     <br>
          <!-- if add is selected it's the following plus the existing condensed list -->
     
     <div class="error-container"></div>
-    <form id="new-bookmark-submit" role="form" class= "add-bookmark">
-      <fieldset>
+    <div class= "new-bookmark-submit">
+      <!-- <form id="new-bookmark-submit" role="form" class= "add-bookmark">
+      <fieldset class="add-bookmark">
         <div>
           <legend>Add Bookmark</legend>
         </div> 
@@ -68,44 +68,16 @@
         </div>
         <button class="commit-bookmark" type="submit">save</button>
         <button class="cancel-bookmark">X</button>
-      </fieldset> 
-     </form>   <!-- default bookmark list -->
+      </fieldset>  
+     </form> -->
+     </div>
+     <!-- default bookmark list -->
       <br>
-      <div class= "bookmark-list">
-        <!-- <li class = "js-item-element bookmark-condensed">
-          <div class = "site-title">Whales</div>
-          <button class= "expand-button">+</button>
-          <div class= "rating">
-            <span id="1" class="fa fa-star checked"></span>
-            <span id="2" class="fa fa-star checked"></span>
-            <span id="3" class="fa fa-star checked"></span>
-            <span id="4" class="fa fa-star"></span>
-            <span id="5" class="fa fa-star"></span>
-          </div>
-        </li> -->
+      <div class= "js-bookmark-list">
+        
       </div>
       <br>
-      <div class = "bookmark-list">
-        <!-- <li class = "js-item-element bookmark-expanded">
-          <div class = "site-title">Whales</div>
-          <button class= "minimize-button">-</button>
-          <div class= "description">
-            <p class= "saved-description">Cool site about whales</p>
-          </div>
-          <div class= "rating">
-              <span id="1" class="fa fa-star checked"></span>
-              <span id="2" class="fa fa-star checked"></span>
-              <span id="3" class="fa fa-star checked"></span>
-              <span id="4" class="fa fa-star"></span>
-              <span id="5" class="fa fa-star"></span>
-            </div>
-          <button class = "link-button"><a href = "insertlinkhere">go to link</a></button>  
-          <button class= "delete-button">
-            <span class = "button-label">Delete</span>
-          </button>
-        </li> -->
-      </div> -->
-
+      
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="scripts/bookmark.js"></script>
     <script type="text/javascript" src="scripts/store.js"></script>

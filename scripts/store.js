@@ -3,7 +3,7 @@
 //eslint-disable-next-line no-unused-vars
 const store = (function(){
 
-  const addBookmark = function(bookmark) {
+  const addBookmark = function(title,rating,url) {
     try{
       Bookmark.validateTitle(title);
       Bookmark.validateRating(rating);
@@ -13,8 +13,8 @@ const store = (function(){
     }
   };
 
-  const findByMinRating = function(rating){
-    return this.bookmarks.find(bookmark => bookmark.rating >= rating);
+  const findByMinRating = function(filter){
+    return this.bookmarks.find(bookmark => bookmark.rating >= filter);
   }; 
 
 
