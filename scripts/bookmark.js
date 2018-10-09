@@ -10,7 +10,7 @@ const Bookmark = (function(){
   };
 
   const validateUrl = function(url) {
-    if (!url || title.length < 5) throw new Error('Must include URL');
+    if (!url || url.length < 5) throw new Error('Must include URL');
   };
   
   const validateRating = function(rating) {

@@ -35,7 +35,7 @@ li {
   list-style: none;
 }
 
-.bookmark-list {
+.js-bookmark-list {
   border-width:10px;
   border-color: black;
 
