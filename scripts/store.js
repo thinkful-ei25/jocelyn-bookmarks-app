@@ -2,12 +2,16 @@
 /* global Bookmark */
 //eslint-disable-next-line no-unused-vars
 const store = (function(){
+  const setError = function(error) {
+    this.error = error;
+  };
 
-  const addBookmark = function(title,rating,url) {
+  const addBookmark = function(bookmark) {
     try{
-      Bookmark.validateTitle(title);
-      Bookmark.validateRating(rating);
-      Bookmark.validateUrl(url);
+      Bookmark.validateTitle(bookmark.title);
+      Bookmark.validateRating(bookmark.rating);
+      Bookmark.validateUrl(bookmark.url);  
+      this.bookmarks.push(bookmark);
     } catch(e){
       console.log(e.message);
     }
@@ -32,10 +36,11 @@ const store = (function(){
 
   return {
     bookmarks: [],
-    create:false,
     filter:null,
     error:null,
+    expanded:false,
 
+    setError,
     addBookmark,
     findByMinRating,
     setItemExpand,

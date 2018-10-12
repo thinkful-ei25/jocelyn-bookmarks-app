@@ -1,5 +1,5 @@
 'use strict';
-/*global api $*/
+/*global $*/
 
 const api = (function(){
   const BASE_URL = 'https://thinkful-list-api.herokuapp.com/jocelyn';
@@ -11,7 +11,7 @@ const api = (function(){
   const createBookmark = function(bookmark, onSuccess, onError) {
     const newBookmark = JSON.stringify(bookmark);
     $.ajax({
-      url: BASE_URL + '/items',
+      url: BASE_URL + '/bookmarks',
       method: 'POST',
       contentType: 'application/json',
       data: newBookmark,

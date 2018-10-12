@@ -1,11 +1,11 @@
 /* global cuid */
 
 'use strict';
-
+//eslint-disable-next-line no-unused-vars
 const Bookmark = (function(){
 
   const validateTitle = function(title) {
-    if (!title || title.length < 1 || typeof(title)!== 'string')
+    if (!title || title.length < 1)
       throw new Error('Title must be at least one character');
   };
 
