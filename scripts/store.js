@@ -17,14 +17,20 @@ const store = (function(){
     }
   };
 
-  const findByMinRating = function(filter){
-    return this.bookmarks.find(bookmark => bookmark.rating >= filter);
+  const findByMinRating = function(){
+    this.bookmarks = this.bookmarks.filter(bookmark => bookmark.rating === store.filter);
+    console.log(this);
+    return this.bookmarks;
+
   }; 
+ 
+  const findById = function(id){
+    this.bookmarks = this.bookmarks.find(bookmark => bookmark.id === id);
+  };
 
-
-  const setItemExpand = function(id) {
-    const bookmark = this.findById(id);
-    bookmark.expanded = !bookmark.expanded;
+  const findAndUpdate = function(id, newData){
+    const item = this.findById(id);
+    Object.assign(item, newData); 
   };
 
   const findAndDelete = function(id){
@@ -38,12 +44,12 @@ const store = (function(){
     bookmarks: [],
     filter:null,
     error:null,
-    expanded:false,
 
     setError,
     addBookmark,
     findByMinRating,
-    setItemExpand,
+    findById,
+    findAndUpdate,
     findAndDelete
   };
   

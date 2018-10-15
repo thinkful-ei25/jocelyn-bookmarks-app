@@ -33,7 +33,6 @@
           <div name="bookmark-create" class = "js-create-field">
             <label for="description">description</label>
             <textarea type="description" name="description" id="new-description">
-              "wow, variable data here"
             </textarea>
           </div>
           
@@ -46,46 +45,35 @@
               <option value="2">2 stars</option>
               <option value="3">3 stars</option>
               <option value="4">4 stars</option>
+              <option value="5">5 stars</option>
             </select>
           </div>
             
             <br>
 
     
-          <div name "buttons" class = "js-submit-fields-"
-            <button type="submit" id = "js-submit-new">Submit</button>  
+          <div name = "buttons" class = "js-submit-fields">
+            <button type="submit" id = "js-submit-new">Save your bookmark</button>
           </div>
+          
+          <br>
 
-         </form> 
+        </form> 
+
+          <div name = "filter" class = "js-filter-fields">
+            <label class="rating" for="new-rating">filter by rating</label>
+            <input type="number" id = "rating-filter" placeholder= "1" min = "1" max="5" />
+            <input type="submit" class= "rating-submit">
+          </div>
 
          <br>
 
          <li class = "js-bookmark-list">
-              <div class = "site-title">${test.title}</div>
-                <button class= "expand-button">+</button>
-              <div class= "rating" id=${item.rating}>
-                  <span id="1" class="fa fa-star checked" checked ></span>
-              </div>
+              
          </li>
 
          <br>
 
-         <li class = "js-bookmark-list-expanded" data-item-id ="${item.id}">
-            <div class = "site-title">${item.title}</div>
-              
-            <button class= "minimize-button">-</button>
-              
-            <div class= "description">
-              <p class= "saved-description">${item.desc}</p>
-            </div>
-            <div class= "rating" id=${item.rating}>
-                <span id="1" class="fa fa-star checked"></span>
-            </div>
-              <button class = "link-button"><a href ="${item.url}">go to link</a></button>  
-              <button class= "delete-button">
-                <span class = "button-label">Delete</span>
-              </button>
-         </li>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -93,7 +81,6 @@
     <script type="text/javascript" src="scripts/bookmark.js"></script> 
     <script type="text/javascript" src="scripts/store.js"></script>
     <script type="text/javascript" src="scripts/bookmarkslist.js"></script>
-
-  
+    <script type="text/javascript" src="scripts/index.js"></script>
    </body>
   </html>
