@@ -7,34 +7,55 @@ const bookmarksList = (function () {
 
   function generatebookmarkElement(bookmark) {
     if ('expanded' in bookmark && bookmark.expanded === true){
-      return `
-            <li id = ${bookmark.id} class = "site-title">${bookmark.title}</div>
-      
+  
+      return  `
+          <br>
+          <li id = ${bookmark.id} class = "site-title">${bookmark.title}</div>
          <button class= "minimize-button">-</button>
-      
          <div class= "description">
            <p class= "saved-description">${bookmark.desc}</p>
          </div>
-         <div class= "rating" id=${bookmark.rating}>
+         <br>
+         <div class= "bookmark-rating" id=${bookmark.rating}>
+         <br>
              <span id="1" class="fa fa-star checked"></span>
+             <span id="2" class="fa fa-star checked"></span>
+             <span id="3" class="fa fa-star checked"></span>
+             <span id="4" class="fa fa-star checked"></span>
+             <span id="5" class="fa fa-star checked"></span>
          </div>
+         <br>
            <button class = "link-button"><a href ="${bookmark.url}">go to link</a></button>  
            <button class= "delete-button">
              <span class = "button-label">Delete</span>
            </button>  
-           </li>`;
+           </li>
+           <br>`;
     } else {
       return `
+            <br>
            <li id = ${bookmark.id} class = "site-title">${bookmark.title}</div>
            <button class= "expand-button">+</button>
-            <div class= "rating" id=${bookmark.rating}>
-           <span id="1" class="fa fa-star checked" checked ></span>
-           </li>`;  
-    }
+            <br>
+            <div class= "bookmark-rating" id=${bookmark.rating}>
+            <br>
+           <span id="1" class="fa fa-star checked" ></span>
+           <span id="2" class="fa fa-star checked" ></span>
+           <span id="3" class="fa fa-star checked" ></span>
+           <span id="4" class="fa fa-star checked" ></span>
+           <span id="5" class="fa fa-star checked" ></span>
+           </div>
+           </li>
+           <br>`;  
+    } 
   }
 
 
-  
+  // function starGenerator(bookmark){
+  //   for (let i = 0; i < bookmark.rating; i++){
+  //     $(`#${i}`).attr('checked', true);
+  //   } render();
+  // }
   
 
   function generateBookmarksString(store) {
@@ -53,12 +74,6 @@ const bookmarksList = (function () {
     const bookmarkListString = generateBookmarksString(bookmarks);
     $('.js-bookmark-list').html(bookmarkListString);
   }
-
-  // //<div name = "filter" class = "js-filter-fields">
-  //           <label class="rating" for="new-rating">filter by rating</label>
-  //           <input type="number" id = "rating-filter" placeholder= "1" min = "1" max="5" />
-  //           <input type="submit" class= "rating-submit">
-  //        // </div>
 
   function handleExpandClick(){
     $('.js-bookmark-list').on('click', '.expand-button', function(event){
@@ -149,6 +164,7 @@ const bookmarksList = (function () {
     handleExpandClick();
     handleMinimizeClick();
     handleDeleteClick();
+    // starGenerator(); 
   }
 
   // This object contains the only exposed methods from this module:

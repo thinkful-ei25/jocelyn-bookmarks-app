@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="eng">
 
 <head>
   <meta charset="utf-8" />
@@ -12,69 +12,69 @@
 </head>
 
 <body>
+
+  <header>
+    <h1>BookMark-It</h1>
+  </header>
+
   <main role= "main"> 
-        <form class="js-create-bookmark" method ="post">
-          <br>
 
-          <div name="bookmark-create" class = "js-create-field">
-            <label for="title">title: </label>
-            <input placeholder="WhalesRCool" type="text" name="title" id="new-title" required />
-          </div>
-
-          <br>
-
-          <div name="bookmark-create" class = "js-create-field">
-            <label for="url">url:</label>
-            <input type="text" name="url" id="new-url" placeholder="http://www.whalesRus.com" required />
-          </div>
-
+        <form role = input class="js-create-bookmark" method ="post">
+          <fieldset>
+            <legend>Create Bookmark</legend> 
             <br>
-
-          <div name="bookmark-create" class = "js-create-field">
-            <label for="description">description</label>
-            <textarea type="description" name="description" id="new-description">
-            </textarea>
-          </div>
-          
+            <div name="bookmark-create" class = "js-create-field">
+              <label for="title">title: </label>
+              <input placeholder="WhalesRCool" type="text" name="title" id="new-title" required />
+            </div>
             <br>
-
-          <div name = "bookmark-create" class = "js-create-field">
-            <label class="rating" for="new-rating">how many stars?</label>
-            <select name="star-rating" id="rating"  required>
-              <option value="1">1 star</option>
-              <option value="2">2 stars</option>
-              <option value="3">3 stars</option>
-              <option value="4">4 stars</option>
-              <option value="5">5 stars</option>
-            </select>
-          </div>
-            
+            <div name="bookmark-create" class = "js-create-field">
+              <label for="url">url:</label>
+              <input type="text" name="url" id="new-url" placeholder="http://www.whalesRus.com" required />
+            </div>
+              <br>
+            <div name="bookmark-create" class = "js-create-field">
+              <label for="description">description:</label>
+              <textarea type="description" name="description" id="new-description">
+              </textarea>
+            </div>
+              <br>
+            <div name = "bookmark-create" class = "js-create-field">
+              <label class="rating" for="new-rating">how many stars?</label>
+              <select name="star-rating" id="rating"  required>
+                <option value="1">1 star</option>
+                <option value="2">2 stars</option>
+                <option value="3">3 stars</option>
+                <option value="4">4 stars</option>
+                <option value="5">5 stars</option>
+              </select>
+            </div>
+              <br>
+            <div name = "buttons" class = "js-submit-fields">
+              <button type="submit" id = "js-submit-new">Save your bookmark</button>
+            </div>
             <br>
-
-    
-          <div name = "buttons" class = "js-submit-fields">
-            <button type="submit" id = "js-submit-new">Save your bookmark</button>
-          </div>
-          
-          <br>
-
+          </fieldset>
         </form> 
+          <br>
 
+        <h2>Current Bookmark List</h2>
+
+          <br>
           <div name = "filter" class = "js-filter-fields">
-            <label class="rating" for="new-rating">filter by rating</label>
+            <label class="rating" for="new-rating">filter by minimum rating</label>
             <input type="number" id = "rating-filter" placeholder= "1" min = "1" max="5" />
             <input type="submit" class= "rating-submit">
           </div>
-
          <br>
-
+         
          <li class = "js-bookmark-list">
               
          </li>
 
          <br>
 
-
+    </main>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="scripts/api.js"></script>

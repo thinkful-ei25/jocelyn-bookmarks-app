@@ -9,38 +9,31 @@ body {
   max-width: 600px;
 }
 
-main , h1 {
+main {
   margin:0 auto;
   padding:0;
   max-width: 600px;
   margin-top:10%;
 }
 
-h1, legend{
+h1, legend, h2, .js-bookmark-list, .js-filter-fields{
   text-align: center;
 }
 
-.new-description {
-  width: 80%;
-  height: 100px;
+.js-create-field, .js-submit-fields{
+  margin: 0 auto; 
+  text-align: center;   
 }
 
-
-.add-bookmark{
-  border:10px, solid, black;
-  max-width: 600px;
+label, legend {
+  font: bold; 
 }
+
 
 li {
   list-style: none;
 }
 
-.js-bookmark-list {
-  border-width:10px;
-  border-color: black;
-
-}
-
-.checked {
-  color: orange;
+.checked{
+  color: orange; 
 }
