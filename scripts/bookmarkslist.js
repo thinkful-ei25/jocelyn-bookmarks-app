@@ -4,6 +4,23 @@
 //eslint-disable-next-line no-unused-vars
 const bookmarksList = (function () {
 
+  function generateError(err) {
+    let message = '';
+    if (err.responseJSON && err.responseJSON.message) {
+      message = err.responseJSON.message;
+    } else {
+      message = `${err.code} Server Error`;
+    }
+
+    return `
+      <section class="error-content">
+        <button id="cancel-error">X</button>
+        <p>${message}</p>
+      </section>
+    `;
+  }
+
+
 
   function generatebookmarkElement(bookmark) {
     if ('expanded' in bookmark && bookmark.expanded === true){
@@ -67,8 +84,8 @@ const bookmarksList = (function () {
   //   }
   //   $('.bookmark-rating').html(star);
   //   render();
-//   }
-// }   
+  //   }
+  // }   
   
 
   function generateBookmarksString(store) {
@@ -78,6 +95,12 @@ const bookmarksList = (function () {
   }
     
   function render() {
+    if (store.error) {
+      const el = generateError(store.error);
+      $('.error-container').html(el);
+    } else {
+      $('.error-container').empty();
+    }
     let bookmarks;
     if (store.filter !== null){
       bookmarks = store.bookmarks.filter(bookmark => bookmark.rating >= store.filter);
@@ -148,14 +171,15 @@ const bookmarksList = (function () {
   function handleNewbookmarkSubmit(){
     $('.js-create-bookmark').on('click', '#js-submit-new', function (event) {
       event.preventDefault();
+      console.log(Bookmark.validateTitle($('#new-title').val())); 
+      console.log(Bookmark.validateRating($('#rating').val()));
+      console.log(Bookmark.validateUrl($('#new-url').val()));
       const bookmark = Bookmark.create(
         $('#new-title').val(),
         $('#new-url').val(),
         $('#rating').val(),
         $('#new-description').val()
-     
       );     
-      console.log(bookmark);
 
       api.createBookmark(bookmark, 
         (newBookmark) => {
@@ -165,9 +189,18 @@ const bookmarksList = (function () {
         },
         (err)=> {
           console.log(err);
+          store.setError(err);
           render();
         }
       );
+    });
+  }
+
+
+  function handleCloseError() {
+    $('.error-container').on('click', '#cancel-error', () => {
+      store.setError(null);
+      render();
     });
   }
 
@@ -177,7 +210,7 @@ const bookmarksList = (function () {
     handleExpandClick();
     handleMinimizeClick();
     handleDeleteClick();
-    // starGenerator();
+    handleCloseError();
   }
 
   // This object contains the only exposed methods from this module:

@@ -12,8 +12,8 @@ const store = (function(){
       Bookmark.validateRating(bookmark.rating);
       Bookmark.validateUrl(bookmark.url);  
       this.bookmarks.push(bookmark);
-    } catch(e){
-      console.log(e.message);
+    } catch(error){
+      console.log(error.message);
     }
   };
 
