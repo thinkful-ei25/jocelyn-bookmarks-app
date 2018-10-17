@@ -7,7 +7,7 @@ const bookmarksList = (function () {
 
   function generatebookmarkElement(bookmark) {
     if ('expanded' in bookmark && bookmark.expanded === true){
-  
+
       return  `
           <br>
           <li id = ${bookmark.id} class = "site-title">${bookmark.title}</div>
@@ -18,11 +18,7 @@ const bookmarksList = (function () {
          <br>
          <div class= "bookmark-rating" id=${bookmark.rating}>
          <br>
-             <span id="1" class="fa fa-star checked"></span>
-             <span id="2" class="fa fa-star checked"></span>
-             <span id="3" class="fa fa-star checked"></span>
-             <span id="4" class="fa fa-star checked"></span>
-             <span id="5" class="fa fa-star checked"></span>
+         ${starGenerator(bookmark)}
          </div>
          <br>
            <button class = "link-button"><a href ="${bookmark.url}">go to link</a></button>  
@@ -39,11 +35,7 @@ const bookmarksList = (function () {
             <br>
             <div class= "bookmark-rating" id=${bookmark.rating}>
             <br>
-           <span id="1" class="fa fa-star checked" ></span>
-           <span id="2" class="fa fa-star checked" ></span>
-           <span id="3" class="fa fa-star checked" ></span>
-           <span id="4" class="fa fa-star checked" ></span>
-           <span id="5" class="fa fa-star checked" ></span>
+            ${starGenerator(bookmark)}
            </div>
            </li>
            <br>`;  
@@ -51,11 +43,32 @@ const bookmarksList = (function () {
   }
 
 
-  // function starGenerator(bookmark){
-  //   for (let i = 0; i < bookmark.rating; i++){
-  //     $(`#${i}`).attr('checked', true);
+  function starGenerator(bookmark){
+    let star = ''; 
+    for (let i = 0; i < Number(bookmark.rating); i++){
+      star+='<span class="fa fa-star checked" ></span>';
+    } return star;
+  }
+
+
+
   //   } render();
   // }
+  // function starGenerator(){
+  //  console.log(store.bookmarks);
+  //   let star = ''; 
+  //   // for (let i = 0; i < store.bookmarks.length; i++){
+  //   stars = store.bookmarks.map(()=> {
+  //      for (let j = 0; j < Number(bookmarks[j].rating); j++){
+  //      star+='<span class="fa fa-star checked" ></span>';
+  //      })
+  //   })
+     
+  //   }
+  //   $('.bookmark-rating').html(star);
+  //   render();
+//   }
+// }   
   
 
   function generateBookmarksString(store) {
@@ -86,9 +99,9 @@ const bookmarksList = (function () {
         render(); 
       } else {
         let bookmarkUpdate = Object.assign({'expanded':true}, bookmark); 
-        console.log(bookmarkUpdate); 
+        // console.log(bookmarkUpdate); 
         store.bookmarks.splice(index, 1, bookmarkUpdate);
-        console.log(store);
+        // console.log(store);
         render();
       }
     });
@@ -101,8 +114,8 @@ const bookmarksList = (function () {
       let id = item.id; 
       let currentBookmark= (store.bookmarks.find(bookmark => bookmark.id === id));
       currentBookmark.expanded = false;  
-      console.log(currentBookmark); 
-      console.log(store);
+      // console.log(currentBookmark); 
+      // console.log(store);
       render();
     });
   }
@@ -123,10 +136,10 @@ const bookmarksList = (function () {
       let item = event.currentTarget.closest('li');
       let id = item.id; 
       let currentBookmark= (store.bookmarks.find(bookmark => bookmark.id === id));
-      console.log(currentBookmark); 
+      // console.log(currentBookmark); 
       api.deleteBookmark(currentBookmark.id); 
       store.bookmarks = store.bookmarks.filter(bookmark => bookmark.id !== id);
-      console.log(store);
+      // console.log(store);
       render(); 
     }); 
   }
@@ -164,7 +177,7 @@ const bookmarksList = (function () {
     handleExpandClick();
     handleMinimizeClick();
     handleDeleteClick();
-    // starGenerator(); 
+    // starGenerator();
   }
 
   // This object contains the only exposed methods from this module:
