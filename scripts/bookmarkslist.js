@@ -67,27 +67,6 @@ const bookmarksList = (function () {
     } return star;
   }
 
-
-
-  //   } render();
-  // }
-  // function starGenerator(){
-  //  console.log(store.bookmarks);
-  //   let star = ''; 
-  //   // for (let i = 0; i < store.bookmarks.length; i++){
-  //   stars = store.bookmarks.map(()=> {
-  //      for (let j = 0; j < Number(bookmarks[j].rating); j++){
-  //      star+='<span class="fa fa-star checked" ></span>';
-  //      })
-  //   })
-     
-  //   }
-  //   $('.bookmark-rating').html(star);
-  //   render();
-  //   }
-  // }   
-  
-
   function generateBookmarksString(store) {
     const bookmarkList = store.map((bookmark) => generatebookmarkElement(bookmark));
     const bookmarkListString = bookmarkList.join('');
@@ -171,9 +150,6 @@ const bookmarksList = (function () {
   function handleNewbookmarkSubmit(){
     $('.js-create-bookmark').on('click', '#js-submit-new', function (event) {
       event.preventDefault();
-      console.log(Bookmark.validateTitle($('#new-title').val())); 
-      console.log(Bookmark.validateRating($('#rating').val()));
-      console.log(Bookmark.validateUrl($('#new-url').val()));
       const bookmark = Bookmark.create(
         $('#new-title').val(),
         $('#new-url').val(),
@@ -188,7 +164,6 @@ const bookmarksList = (function () {
           render(); 
         },
         (err)=> {
-          console.log(err);
           store.setError(err);
           render();
         }

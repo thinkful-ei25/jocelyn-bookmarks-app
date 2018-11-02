@@ -5,8 +5,10 @@
 const Bookmark = (function(){
 
   const validateTitle = function(title) {
-    if (!title || title.length < 1)
-      throw new Error('Title must be at least one character');
+    if (!title || title.length < 1) {
+      let e = new Error('Title must be at least one character'); 
+      throw e; 
+    } return; 
   };
 
   const validateUrl = function(url) {

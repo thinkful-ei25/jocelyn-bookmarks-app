@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Save and add bookmarks with Bookmark-It">
   <title>BookMark-It</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -13,15 +14,15 @@
 
 <body>
 
-  <header>
+  <header role = "banner">
     <h1>BookMark-It</h1>
   </header>
 
   <main role= "main"> 
     <div class="error-container"></div>
 
-        <form role = input class="js-create-bookmark" method ="post">
-          <fieldset>
+        <form role = "input" class="js-create-bookmark" method ="post">
+          <fieldset role = "form">
             <legend>Create Bookmark</legend> 
             <br>
             <div name="bookmark-create" class = "js-create-field">
